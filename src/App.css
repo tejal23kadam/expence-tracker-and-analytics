@@ -36,3 +36,377 @@
     transform: rotate(360deg);
   }
 }
+
+.transaction-table-container {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.table-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  background: #fff;
+  box-shadow: rgba(0,0,0,0.1) 0px 2px 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.transaction-table th {
+  background: #4a4a8c;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.transaction-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.transaction-table tr:hover {
+  background: #f5f5f5;
+}
+
+/* -------- Color rows -------- */
+.row-income {
+  background: #e6ffe8;
+}
+
+.row-expense {
+  background: #ffe6e6;
+}
+
+/* -------- Button styles -------- */
+.btn-edit {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background: #008cff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  padding: 5px 10px;
+  background: #ff4b4b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-edit:hover {
+  background: #0069d9;
+}
+
+.btn-delete:hover {
+  background: #d93636;
+}
+
+/*transacion form css start*/
+/* Card Container */
+.tf-card {
+  width: 100%;
+  max-width: 550px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Title */
+.tf-title {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #4a00e0, #8e2de2);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+/* Input Groups */
+.tf-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.tf-group label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+/* Inputs */
+.tf-group input,
+.tf-group select {
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.tf-group input:focus,
+.tf-group select:focus {
+  border-color: #8e2de2;
+  box-shadow: 0 0 4px rgba(142,45,226,0.4);
+}
+
+/* Buttons Section */
+.tf-btn-row {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Submit button */
+.tf-btn-submit {
+  flex: 1;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.tf-btn-submit:hover {
+  opacity: 0.85;
+}
+
+/* Cancel button */
+.tf-btn-cancel {
+  flex: 1;
+  background: #ff4b5c;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.tf-btn-cancel:hover {
+  background: #e63e4f;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/*transaction form csss ends*/
+
+/*transaction list.js css start */
+/* Pagination Container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+/* Pagination Buttons */
+.pagination button {
+  padding: 6px 12px;
+  border: none;
+  background: #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pagination button:hover {
+  background: #bbb;
+}
+
+/* Active Page */
+.pagination .active-page {
+  background: #4a4a8c;
+  color: white;
+  font-weight: bold;
+}
+
+.pagination button:disabled {
+  background: #eee;
+  cursor: not-allowed;
+}
+
+/*transaction list.js css end */
+
+
+/*filters css start*/
+
+.filters-container {
+  background-color: #f8f9fa;
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  margin: 20px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.filters-container h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.filter-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.2s;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+.filter-dates {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.clear-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.clear-btn:hover {
+  background-color: #6d23c8;
+}
+
+/*filters css ends */
+
+
+/*two column css */
+.dashboard {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap; /* allows columns to wrap on small screens */
+}
+
+/* Left column (Transaction Form) */
+.left-col {
+  flex: 1 1 300px; /* grow, shrink, min width 300px */
+}
+
+/* Right column (Filters) */
+.right-col {
+  flex: 1 1 250px; /* grow, shrink, min width 250px */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .left-col,
+  .right-col {
+    flex: 1 1 100%;
+  }
+}
+
+/*two column css ends*/
+
+/*summary card css start*/
+
+.card {
+  flex: 1;        /* optional: makes all cards equal width */
+}
+
+.summary-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 10px auto;
+  max-width: auto;
+  flex-wrap: wrap; /* responsive stacking */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Individual cards */
+.card {
+  flex: 1;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Specific card colors */
+.balance-card {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+}
+
+
+/* Headings */
+.card h4 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+/* Amount */
+.card p {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/*summary card css ends*/

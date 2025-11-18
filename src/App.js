@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import { GlobalProvider } from "./context/GlobalState";
+
+import SummaryCard from "./components/SummaryCard";
+import Filters from "./components/Filters";
+import TransactionForm from "./components/TransactionForm";
+import TransactionList from "./components/TransactionList";
+import ExportImport from "./components/ExportImport";
+import ChartPanel from "./components/ChartPanel";
+
+import "./App.css";
+
+function AppInner() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Expense Tracker</h1>
+      <div className="dashboard">
+        <div className="left-col">
+          <TransactionForm />
+        </div>
+
+        <div className="right-col">
+          <Filters />
+        </div>
+      </div>
+      <div className="top-grid">
+        <TransactionList />
+      </div>
+
+      <div className="top-grid">
+        <SummaryCard />
+      </div>
+      <div className="main-grid">
+        <div className="right-col">
+          <ChartPanel />
+        </div>
+      </div>
+      <div className="top-grid">
+        <ExportImport />
+      </div>
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <GlobalProvider>
+      <AppInner />
+    </GlobalProvider>
+  );
+}
