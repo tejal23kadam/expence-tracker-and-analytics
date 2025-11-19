@@ -1,15 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
-//import "./TransactionForm.css";
 
 export default function TransactionForm() {
-    const {
-        addTransaction,
-        editing,
-        updateTransaction,
-        categories
-    } = useContext(GlobalContext);
-
+    const { addTransaction, categories } = useContext(GlobalContext);
     const [form, setForm] = useState({
         title: "",
         amount: "",
@@ -18,44 +11,26 @@ export default function TransactionForm() {
         date: "",
     });
 
-    useEffect(() => {
-        if (editing) {
-            setForm(editing);
-        }
-    }, [editing]);
-
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const newData = {
             ...form,
             amount: form.type === "expense"
                 ? -Math.abs(Number(form.amount))
                 : Math.abs(Number(form.amount))
         };
-
-        if (editing) {
-            updateTransaction(newData);
-        } else {
-            addTransaction(newData);
-        }
-
+        addTransaction(newData);
         setForm({ title: "", amount: "", type: "expense", category: "", date: "" });
     };
 
     return (
         <div className="tf-card">
-            <h2 className="tf-title">
-                {editing ? "Edit Transaction" : "Add New Transaction"}
-            </h2>
-
+            <h2 className="tf-title"> Add New Transaction </h2>
             <form onSubmit={handleSubmit} className="tf-form">
-
-                
                 <div className="tf-group">
                     <label>Title</label>
                     <input
@@ -67,7 +42,6 @@ export default function TransactionForm() {
                     />
                 </div>
 
-                
                 <div className="tf-group">
                     <label>Amount</label>
                     <input
@@ -79,7 +53,6 @@ export default function TransactionForm() {
                     />
                 </div>
 
-                
                 <div className="tf-group">
                     <label>Type</label>
                     <select name="type" value={form.type} onChange={handleChange}>
@@ -104,7 +77,6 @@ export default function TransactionForm() {
                     </select>
                 </div>
 
-                
                 <div className="tf-group">
                     <label>Date</label>
                     <input
@@ -116,13 +88,10 @@ export default function TransactionForm() {
                     />
                 </div>
 
-                
                 <div className="tf-btn-row">
                     <button className="tf-btn-submit" type="submit">
-                       Add
+                        Add
                     </button>
-
-                  
                 </div>
             </form>
         </div>

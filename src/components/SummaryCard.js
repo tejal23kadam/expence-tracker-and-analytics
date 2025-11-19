@@ -1,25 +1,20 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
-
 export default function SummaryCard() {
-    const { transactions } = useContext(GlobalContext);
+  const { transactions } = useContext(GlobalContext);
 
+  const income = transactions
+    .filter(t => t.amount > 0)
+    .reduce((a, b) => a + b.amount, 0);
 
-    const income = transactions
-        .filter(t => t.amount > 0)
-        .reduce((a, b) => a + b.amount, 0);
-
-
-    const expense = transactions
-        .filter(t => t.amount < 0)
-        .reduce((a, b) => a + Math.abs(b.amount), 0);
-
-
+  const expense = transactions
+    .filter(t => t.amount < 0)
+    .reduce((a, b) => a + Math.abs(b.amount), 0);
+  
     const balance = income - expense;
 
-
-   return (
+  return (
     <div className="summary-card">
       <div className="card balance-card">
         <h4>Total Balance</h4>

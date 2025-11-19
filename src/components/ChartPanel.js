@@ -36,10 +36,10 @@ export default function ChartPanel() {
   const COLORS = ["#0088FE", "#FF8042", "#00C49F", "#FFBB28", "#AA336A", "#8844FF"];
 
   // Bar Chart: Monthly Income vs Expense 
-    const monthlyData = useMemo(() => {
+  const monthlyData = useMemo(() => {
     const months = [
-      "Jan","Feb","Mar","Apr","May","Jun",
-      "Jul","Aug","Sep","Oct","Nov","Dec"
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
 
     const data = months.map((m) => ({
@@ -63,28 +63,58 @@ export default function ChartPanel() {
 
   return (
     <div className="chart-panel">
-      
+
       {/* Pie Chart */}
       <div className="chart-card">
         <h3>Expense by Category</h3>
-        <ResponsiveContainer width="100%" height={300}>
-          <PieChart>
-            <Pie
-              data={categoryTotals}
-              dataKey="value"
-              nameKey="name"
-              cx="50%"
-              cy="50%"
-              outerRadius={90}
-              label
-            >
+        
+        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+
+          {/* Pie Chart */}
+          <div style={{ width: "60%", height: 300 }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={categoryTotals}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={90}
+                  label
+                >
+                  {categoryTotals.map((entry, i) => (
+                    <Cell key={i} fill={COLORS[i % COLORS.length]} />
+                  ))}
+                </Pie>
+
+                {/* Remove default Legend (we use custom) */}
+                <PieTooltip formatter={(value) => `₹${value}`} />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+
+        
+          <div>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
               {categoryTotals.map((entry, i) => (
-                <Cell key={i} fill={COLORS[i % COLORS.length]} />
+                <li key={i} style={{ display: "flex", alignItems: "center", marginBottom: 6 }}>
+                  <div
+                    style={{
+                      width: 12,
+                      height: 12,
+                      backgroundColor: COLORS[i % COLORS.length],
+                      marginRight: 8,
+                      borderRadius: 3
+                    }}
+                  ></div>
+                  <span>{entry.name}</span>
+                </li>
               ))}
-            </Pie>
-            <PieTooltip formatter={(value) => `₹${value}`} />
-          </PieChart>
-        </ResponsiveContainer>
+            </ul>
+          </div>
+
+        </div>
       </div>
 
       {/* Bar Chart */}

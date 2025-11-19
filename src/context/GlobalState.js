@@ -2,7 +2,6 @@ import React, { createContext, useReducer, useEffect } from "react";
 import AppReducer from "./AppReducer";
 
 export const categories = ["Food", "Shopping", "Bills", "Salary", "Travel", "Other"];
-
 export const GlobalContext = createContext();
 
 // Initial state

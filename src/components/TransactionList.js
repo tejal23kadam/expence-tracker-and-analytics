@@ -8,7 +8,6 @@ export default function TransactionList() {
   const [editId, setEditId] = useState(null);
   const [editForm, setEditForm] = useState({ title: "", amount: "", category: "", date: "" });
 
-
   const filteredList = useMemo(() => {
     return transactions.filter((t) => {
       if (filter.title && !(t.title || "").toLowerCase().includes((filter.title || "").toLowerCase()))
@@ -21,7 +20,8 @@ export default function TransactionList() {
       if (filter.dateFrom && t.date < filter.dateFrom) return false;
       if (filter.dateTo && t.date > filter.dateTo) return false;
       return true;
-    });
+    })
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
   }, [transactions, filter]);
 
   // pagination

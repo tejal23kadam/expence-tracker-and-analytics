@@ -65,9 +65,7 @@ export default function Filters() {
           <input
             type="date"
             value={filter.dateFrom || ""}
-            on
-
-            Change={(e) => update("dateFrom", e.target.value)}
+            onChange={(e) => update("dateFrom", e.target.value)}
           />
         </div>
         <div className="filter-group">
@@ -84,10 +82,7 @@ export default function Filters() {
         <button className="tf-btn-submit" onClick={() => setFilter(initialFilter)}>
           Clear Filters
         </button>
-
-
       </div>
-
     </div>
   );
 }
