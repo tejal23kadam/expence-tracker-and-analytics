@@ -67,11 +67,11 @@ export default function ChartPanel() {
       {/* Pie Chart */}
       <div className="chart-card">
         <h3>Expense by Category</h3>
-        
-        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+
+        <div className="chart-flex">
 
           {/* Pie Chart */}
-          <div style={{ width: "60%", height: 300 }}>
+          <div className="chart-pie">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -88,25 +88,19 @@ export default function ChartPanel() {
                   ))}
                 </Pie>
 
-                {/* Remove default Legend (we use custom) */}
                 <PieTooltip formatter={(value) => `₹${value}`} />
               </PieChart>
             </ResponsiveContainer>
           </div>
 
-        
-          <div>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          {/* Legend */}
+          <div className="chart-legend">
+            <ul>
               {categoryTotals.map((entry, i) => (
-                <li key={i} style={{ display: "flex", alignItems: "center", marginBottom: 6 }}>
+                <li key={i}>
                   <div
-                    style={{
-                      width: 12,
-                      height: 12,
-                      backgroundColor: COLORS[i % COLORS.length],
-                      marginRight: 8,
-                      borderRadius: 3
-                    }}
+                    className="legend-dot"
+                    style={{ backgroundColor: COLORS[i % COLORS.length] }}
                   ></div>
                   <span>{entry.name}</span>
                 </li>

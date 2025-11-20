@@ -361,7 +361,7 @@
 /*summary card css start*/
 
 .card {
-  flex: 1;        /* optional: makes all cards equal width */
+  flex: 1;
 }
 
 .summary-card {
@@ -370,11 +370,10 @@
   gap: 1rem;
   margin: 10px auto;
   max-width: auto;
-  flex-wrap: wrap; /* responsive stacking */
+  flex-wrap: wrap;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Individual cards */
 .card {
   flex: 1;
   padding: 20px;
@@ -382,6 +381,7 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 230px; 
 }
 
 .card:hover {
@@ -389,24 +389,239 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Specific card colors */
 .balance-card {
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: #fff;
 }
 
-
-/* Headings */
 .card h4 {
   margin-bottom: 10px;
   font-size: 1.2rem;
   letter-spacing: 0.5px;
 }
 
-/* Amount */
 .card p {
   font-size: 1.8rem;
   font-weight: bold;
 }
 
+/* ⭐ Tablet View - 2 cards per row */
+@media (max-width: 900px) {
+  .summary-card {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .card {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+/* 📱 Mobile View - 1 card per row */
+@media (max-width: 600px) {
+  .summary-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: unset;
+  }
+
+  .card p {
+    font-size: 1.5rem;
+  }
+}
+
+/* 📱 Extra Small Devices (≤ 425px) — Full 100% width */
+@media (max-width: 426px) {
+  .summary-card {
+    width: 100%;
+    padding: 0;
+  }
+
+  .card {
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 /*summary card css ends*/
+
+/*transaction list css start*/
+/* Container */
+.transaction-list-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+/* Table Base */
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* prevents layout breaking */
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Income / Expense Colors */
+.income {
+  color: green;
+  font-weight: bold;
+}
+
+.expense {
+  color: red;
+  font-weight: bold;
+}
+
+/* Buttons */
+.btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  margin: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn.edit { background: #3498db; color: #fff; }
+.btn.delete { background: #e74c3c; color: #fff; }
+.btn.save { background: #2ecc71; color: #fff; }
+.btn.cancel { background: #7f8c8d; color: #fff; }
+
+/* Flex buttons inside table */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* Pagination bottom */
+.pagination button {
+  padding: 6px 10px;
+  margin: 3px;
+  border-radius: 4px;
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: #333;
+  color: #fff;
+}
+
+/* ⚡ MOBILE VIEW */
+@media (max-width: 768px) {
+  .transaction-table {
+    min-width: 100%; /* full width */
+    font-size: 14px;
+  }
+
+  .transaction-table th,
+  .transaction-table td {
+    padding: 8px;
+  }
+
+  /* Buttons shrink */
+  .btn {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+}
+
+/* 📱 SMALL MOBILE VIEW */
+@media (max-width: 500px) {
+  .transaction-list-container {
+    padding: 5px;
+  }
+
+  /* Table becomes scrollable */
+  .transaction-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .btn {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+
+  /* Pagination compresses */
+  .pagination button {
+    padding: 4px 6px;
+    font-size: 12px;
+  }
+}
+
+/*transaction  list css ends*/
+
+/*chart pannel css start*/
+
+
+.chart-flex {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.chart-pie {
+  width: 60%;
+  height: 300px;
+}
+
+.chart-legend ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chart-legend li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border-radius: 3px;
+}
+
+
+@media (max-width: 426px) {
+  .chart-flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .chart-pie {
+    width: 100%;
+    height: 260px; /* smaller for mobile */
+  }
+
+  .chart-legend ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .chart-legend li {
+    margin-bottom: 0;
+  }
+}
+
+/*chart pannel css end*/

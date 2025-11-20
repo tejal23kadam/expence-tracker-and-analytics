@@ -28,11 +28,13 @@ function AppInner() {
       <div className="top-grid">
         <SummaryCard />
       </div>
-      <div className="main-grid">
-        <div className="right-col">
-          <ChartPanel />
+      {/* <div className="dashboard"> */}
+        <div className="main-grid">
+          <div className="right-col">
+            <ChartPanel />
+          </div>
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 }
